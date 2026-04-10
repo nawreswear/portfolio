@@ -1,0 +1,1226 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Nawres Wear | Développeuse Full Stack</title>
+  <style>
+    @import url('https://fonts.googleapis.com/css2?family=Syne:wght@400;600;700;800&family=Plus+Jakarta+Sans:ital,wght@0,300;0,400;0,500;0,600;0,700;1,300&display=swap');
+    
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    :root {
+      --bg: #F7F6F2;
+      --bg2: #FFFFFF;
+      --bg3: #EEECEA;
+      --a1: #1B43C6;
+      --a2: #3D65E8;
+      --ag: #0D9B88;
+      --tx: #1A1A2E;
+      --tx2: #5A5A72;
+      --tx3: #9898B0;
+      --cd: #FFFFFF;
+      --br: rgba(27, 67, 198, 0.10);
+      --sh: 0 2px 20px rgba(27, 67, 198, 0.08);
+      --sh2: 0 12px 40px rgba(27, 67, 198, 0.16);
+      --transition: all 0.3s cubic-bezier(0.2, 0.9, 0.4, 1.1);
+    }
+
+    body {
+      font-family: 'Plus Jakarta Sans', sans-serif;
+      background: var(--bg);
+      color: var(--tx);
+      overflow-x: hidden;
+      line-height: 1.65;
+    }
+
+    h1, h2, h3, h4 {
+      font-family: 'Syne', sans-serif;
+    }
+
+    /* Smooth scroll */
+    html {
+      scroll-behavior: smooth;
+    }
+
+    /* NAV améliorée */
+    nav {
+      position: fixed;
+      top: 0;
+      width: 100%;
+      z-index: 100;
+      padding: 0.85rem 2.5rem;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      background: rgba(247, 246, 242, 0.92);
+      backdrop-filter: blur(20px);
+      border-bottom: 1px solid var(--br);
+      transition: var(--transition);
+    }
+
+    .logo {
+      font-family: 'Syne', sans-serif;
+      font-weight: 800;
+      font-size: 1.6rem;
+      letter-spacing: -0.02em;
+      background: linear-gradient(130deg, var(--a1) 0%, var(--ag) 100%);
+      -webkit-background-clip: text;
+      background-clip: text;
+      -webkit-text-fill-color: transparent;
+    }
+
+    .nav-links {
+      display: flex;
+      gap: 2rem;
+      list-style: none;
+      align-items: center;
+    }
+
+    .nav-links a {
+      color: var(--tx2);
+      text-decoration: none;
+      font-size: 0.82rem;
+      letter-spacing: 0.06em;
+      text-transform: uppercase;
+      font-weight: 600;
+      transition: color 0.2s;
+      position: relative;
+    }
+
+    .nav-links a::after {
+      content: '';
+      position: absolute;
+      bottom: -4px;
+      left: 0;
+      width: 0;
+      height: 2px;
+      background: linear-gradient(90deg, var(--a1), var(--ag));
+      transition: width 0.3s ease;
+      border-radius: 2px;
+    }
+
+    .nav-links a:hover {
+      color: var(--tx);
+    }
+
+    .nav-links a:hover::after {
+      width: 100%;
+    }
+
+    /* HERO amélioré */
+    .hero {
+      max-width: 1120px;
+      margin: 0 auto;
+      padding: 8rem 2.5rem 4rem;
+      display: grid;
+      grid-template-columns: 1.1fr 1fr;
+      gap: 4rem;
+      align-items: center;
+    }
+
+    .hero-tag {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.6rem;
+      background: rgba(27, 67, 198, 0.08);
+      padding: 0.4rem 1.2rem;
+      border-radius: 100px;
+      font-size: 0.75rem;
+      font-weight: 700;
+      color: var(--a1);
+      margin-bottom: 1.5rem;
+      letter-spacing: 0.02em;
+    }
+
+    .hero-tag::before {
+      content: '';
+      width: 8px;
+      height: 8px;
+      background: var(--ag);
+      border-radius: 50%;
+      animation: pulse 2s infinite;
+    }
+
+    @keyframes pulse {
+      0%, 100% { opacity: 1; transform: scale(1); }
+      50% { opacity: 0.5; transform: scale(1.2); }
+    }
+
+    .hero h1 {
+      font-size: clamp(2.8rem, 5vw, 4.2rem);
+      font-weight: 800;
+      line-height: 1.1;
+      letter-spacing: -0.03em;
+      margin-bottom: 1.3rem;
+      color: var(--tx);
+    }
+
+    .hero h1 span {
+      display: block;
+    }
+
+    .grad-txt {
+      background: linear-gradient(130deg, var(--a1), var(--ag));
+      -webkit-background-clip: text;
+      background-clip: text;
+      -webkit-text-fill-color: transparent;
+    }
+
+    .hero p {
+      color: var(--tx2);
+      font-size: 1.05rem;
+      line-height: 1.7;
+      margin-bottom: 2rem;
+      max-width: 460px;
+    }
+
+    .btn-row {
+      display: flex;
+      gap: 1rem;
+      flex-wrap: wrap;
+    }
+
+    .btn-primary {
+      padding: 0.85rem 2rem;
+      background: var(--a1);
+      color: #fff;
+      border: none;
+      border-radius: 12px;
+      font-family: 'Plus Jakarta Sans', sans-serif;
+      font-size: 0.9rem;
+      font-weight: 600;
+      cursor: pointer;
+      transition: var(--transition);
+      letter-spacing: 0.01em;
+    }
+
+    .btn-primary:hover {
+      background: #1338A0;
+      transform: translateY(-3px);
+      box-shadow: 0 10px 30px rgba(27, 67, 198, 0.3);
+    }
+
+    .btn-outline {
+      padding: 0.85rem 2rem;
+      background: transparent;
+      color: var(--a1);
+      border: 1.5px solid rgba(27, 67, 198, 0.3);
+      border-radius: 12px;
+      font-family: 'Plus Jakarta Sans', sans-serif;
+      font-size: 0.9rem;
+      font-weight: 600;
+      cursor: pointer;
+      transition: var(--transition);
+    }
+
+    .btn-outline:hover {
+      background: rgba(27, 67, 198, 0.06);
+      transform: translateY(-3px);
+      border-color: var(--a1);
+    }
+
+    /* Hero Card */
+    .hero-visual {
+      position: relative;
+    }
+
+    .avatar-ring {
+      background: var(--cd);
+      border-radius: 28px;
+      padding: 2rem;
+      text-align: center;
+      box-shadow: var(--sh2);
+      border: 1px solid var(--br);
+      transition: var(--transition);
+    }
+
+    .avatar-ring:hover {
+      transform: translateY(-6px);
+      box-shadow: 0 20px 50px rgba(27, 67, 198, 0.2);
+    }
+
+    .avatar-inner img {
+      width: 120px;
+      height: 120px;
+      border-radius: 50%;
+      object-fit: cover;
+      margin-bottom: 1rem;
+      border: 3px solid var(--ag);
+      box-shadow: var(--sh);
+    }
+
+    .avatar-name {
+      font-family: 'Syne', sans-serif;
+      font-size: 1.3rem;
+      font-weight: 800;
+      margin-bottom: 0.2rem;
+    }
+
+    .avatar-sub {
+      color: var(--tx3);
+      font-size: 0.85rem;
+      font-weight: 500;
+    }
+
+    .float-badge {
+      position: absolute;
+      background: var(--cd);
+      backdrop-filter: blur(12px);
+      padding: 0.4rem 1rem;
+      border-radius: 100px;
+      font-size: 0.75rem;
+      font-weight: 600;
+      box-shadow: var(--sh);
+      border: 1px solid var(--br);
+    }
+
+    .fb1 {
+      top: 5%;
+      right: -10px;
+      background: var(--a1);
+      color: white;
+      border: none;
+    }
+
+    .fb2 {
+      bottom: 10%;
+      left: -15px;
+    }
+
+    /* Section styles */
+    .section-label {
+      font-size: 0.7rem;
+      font-weight: 700;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+      color: var(--a1);
+      margin-bottom: 0.6rem;
+      display: inline-flex;
+      align-items: center;
+      gap: 0.5rem;
+    }
+
+    .section-label::before {
+      content: '';
+      width: 24px;
+      height: 2px;
+      background: var(--a1);
+      border-radius: 2px;
+      display: block;
+    }
+
+    .section-title {
+      font-size: 2rem;
+      font-weight: 800;
+      letter-spacing: -0.025em;
+      color: var(--tx);
+      margin-bottom: 2.5rem;
+    }
+
+    /* About grid */
+    .grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 3rem;
+      align-items: start;
+    }
+
+    .about-text p {
+      color: var(--tx2);
+      line-height: 1.8;
+      margin-bottom: 1rem;
+      font-size: 0.97rem;
+    }
+
+    .info-card {
+      background: var(--cd);
+      border: 1px solid var(--br);
+      border-radius: 18px;
+      padding: 1.5rem;
+      margin-bottom: 1.5rem;
+      box-shadow: var(--sh);
+      transition: var(--transition);
+    }
+
+    .info-card:hover {
+      transform: translateY(-3px);
+      box-shadow: var(--sh2);
+    }
+
+    .info-card h4 {
+      font-family: 'Syne', sans-serif;
+      color: var(--a1);
+      font-size: 0.9rem;
+      font-weight: 700;
+      margin-bottom: 1rem;
+      letter-spacing: 0.04em;
+    }
+
+    .info-card ul li {
+      list-style: none;
+      margin-bottom: 0.8rem;
+      display: flex;
+      justify-content: space-between;
+      font-size: 0.88rem;
+    }
+
+    /* Tab bar */
+    .tab-row {
+      display: flex;
+      gap: 0.5rem;
+      margin-bottom: 2rem;
+      background: var(--bg3);
+      border-radius: 14px;
+      padding: 0.4rem;
+      width: fit-content;
+    }
+
+    .tab-btn {
+      padding: 0.5rem 1.5rem;
+      border-radius: 10px;
+      border: none;
+      background: transparent;
+      color: var(--tx3);
+      font-family: 'Plus Jakarta Sans', sans-serif;
+      font-size: 0.85rem;
+      font-weight: 600;
+      cursor: pointer;
+      transition: var(--transition);
+    }
+
+    .tab-btn.active {
+      background: var(--cd);
+      color: var(--a1);
+      box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
+    }
+
+    /* Video Grid amélioré */
+    .video-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
+      gap: 1.8rem;
+    }
+
+    .video-card {
+      background: var(--cd);
+      border: 1px solid var(--br);
+      border-radius: 20px;
+      overflow: hidden;
+      transition: var(--transition);
+      box-shadow: var(--sh);
+    }
+
+    .video-card:hover {
+      transform: translateY(-6px);
+      box-shadow: var(--sh2);
+      border-color: rgba(27, 67, 198, 0.2);
+    }
+
+    .video-thumb {
+      aspect-ratio: 16/9;
+      position: relative;
+      overflow: hidden;
+      background: linear-gradient(135deg, #E8EEFF, #E0F5F0);
+    }
+
+    .video-thumb video,
+    .video-thumb iframe {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      border: none;
+      display: block;
+    }
+
+    .video-info {
+      padding: 1.2rem;
+    }
+
+    .video-info h4 {
+      font-family: 'Syne', sans-serif;
+      font-size: 0.95rem;
+      font-weight: 700;
+      color: var(--tx);
+      margin-bottom: 0.3rem;
+    }
+
+    .video-info p {
+      color: var(--tx3);
+      font-size: 0.8rem;
+      line-height: 1.5;
+      margin-bottom: 0.6rem;
+    }
+
+    .video-badge {
+      display: inline-block;
+      padding: 0.2rem 0.8rem;
+      border-radius: 100px;
+      font-size: 0.7rem;
+      font-weight: 700;
+      letter-spacing: 0.04em;
+    }
+
+    .video-badge:contains("Démo") {
+      background: rgba(27, 67, 198, 0.08);
+      color: var(--a1);
+    }
+
+    /* Projects Grid */
+    .proj-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+      gap: 1.8rem;
+    }
+
+    .proj-card {
+      background: var(--cd);
+      border: 1px solid var(--br);
+      border-radius: 20px;
+      overflow: hidden;
+      transition: var(--transition);
+      box-shadow: var(--sh);
+    }
+
+    .proj-card:hover {
+      transform: translateY(-5px);
+      box-shadow: var(--sh2);
+      border-color: rgba(27, 67, 198, 0.2);
+    }
+
+    .proj-thumb {
+      height: 180px;
+      overflow: hidden;
+      background: var(--bg3);
+    }
+
+    .proj-thumb img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      transition: transform 0.4s ease;
+    }
+
+    .proj-card:hover .proj-thumb img {
+      transform: scale(1.05);
+    }
+
+    .proj-body {
+      padding: 1.2rem;
+    }
+
+    .proj-body h4 {
+      font-family: 'Syne', sans-serif;
+      font-size: 0.95rem;
+      font-weight: 700;
+      color: var(--tx);
+      margin-bottom: 0.4rem;
+    }
+
+    .proj-body p {
+      color: var(--tx2);
+      font-size: 0.82rem;
+      line-height: 1.6;
+      margin-bottom: 0.8rem;
+    }
+
+    .tags {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.4rem;
+      margin-bottom: 1rem;
+    }
+
+    .tag {
+      background: var(--bg3);
+      color: var(--tx2);
+      border-radius: 6px;
+      padding: 0.2rem 0.7rem;
+      font-size: 0.7rem;
+      font-weight: 600;
+    }
+
+    /* Skills Grid */
+    .sgrid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
+      gap: 1.2rem;
+    }
+
+    .scard {
+      background: var(--cd);
+      border: 1px solid var(--br);
+      border-radius: 18px;
+      padding: 1.4rem;
+      box-shadow: var(--sh);
+      transition: var(--transition);
+      position: relative;
+      overflow: hidden;
+    }
+
+    .scard::after {
+      content: '';
+      position: absolute;
+      bottom: 0;
+      left: 0;
+      right: 0;
+      height: 3px;
+      background: linear-gradient(90deg, var(--a1), var(--ag));
+      opacity: 0;
+      transition: opacity 0.3s;
+    }
+
+    .scard:hover {
+      transform: translateY(-4px);
+      box-shadow: var(--sh2);
+    }
+
+    .scard:hover::after {
+      opacity: 1;
+    }
+
+    .scat {
+      font-family: 'Syne', sans-serif;
+      font-size: 0.8rem;
+      font-weight: 800;
+      color: var(--a1);
+      margin-bottom: 1rem;
+      text-transform: uppercase;
+      letter-spacing: 0.06em;
+    }
+
+    .schips {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.5rem;
+    }
+
+    .schip {
+      background: var(--bg);
+      border: 1px solid rgba(27, 67, 198, 0.08);
+      color: var(--tx2);
+      border-radius: 8px;
+      padding: 0.25rem 0.8rem;
+      font-size: 0.78rem;
+      font-weight: 500;
+      transition: var(--transition);
+    }
+
+    .schip:hover {
+      background: rgba(27, 67, 198, 0.07);
+      color: var(--a1);
+      border-color: rgba(27, 67, 198, 0.2);
+    }
+
+    /* Experience */
+    .exp-item {
+      display: flex;
+      gap: 1.5rem;
+      background: var(--cd);
+      border: 1px solid var(--br);
+      border-radius: 18px;
+      padding: 1.5rem;
+      margin-bottom: 1.2rem;
+      transition: var(--transition);
+    }
+
+    .exp-item:hover {
+      transform: translateX(6px);
+      box-shadow: var(--sh);
+      border-color: rgba(27, 67, 198, 0.2);
+    }
+
+    .exp-dot {
+      width: 12px;
+      height: 12px;
+      background: var(--a1);
+      border-radius: 50%;
+      margin-top: 0.3rem;
+      box-shadow: 0 0 0 3px rgba(27, 67, 198, 0.15);
+    }
+
+    .exp-content {
+      flex: 1;
+    }
+
+    .exp-content h4 {
+      font-size: 1.05rem;
+      font-weight: 700;
+      margin-bottom: 0.2rem;
+    }
+
+    .exp-meta {
+      font-size: 0.75rem;
+      color: var(--ag);
+      font-weight: 600;
+      margin-bottom: 0.6rem;
+    }
+
+    .exp-desc {
+      color: var(--tx2);
+      font-size: 0.85rem;
+      line-height: 1.7;
+      margin-bottom: 0.8rem;
+    }
+
+    /* Contact Grid */
+    .contact-grid {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 1.2rem;
+    }
+
+    .contact-card {
+      background: var(--cd);
+      border: 1px solid var(--br);
+      border-radius: 18px;
+      padding: 1.5rem;
+      text-align: center;
+      text-decoration: none;
+      transition: var(--transition);
+      box-shadow: var(--sh);
+      display: block;
+    }
+
+    .contact-card:hover {
+      transform: translateY(-5px);
+      box-shadow: var(--sh2);
+      border-color: var(--a1);
+    }
+
+    .c-icon {
+      width: 50px;
+      height: 50px;
+      background: rgba(27, 67, 198, 0.08);
+      border-radius: 14px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      margin: 0 auto 1rem;
+      transition: var(--transition);
+    }
+
+    .contact-card:hover .c-icon {
+      background: rgba(27, 67, 198, 0.15);
+    }
+
+    .c-icon svg {
+      width: 24px;
+      height: 24px;
+      stroke: var(--a1);
+      fill: none;
+      stroke-width: 1.6;
+    }
+
+    .contact-card h4 {
+      font-family: 'Syne', sans-serif;
+      color: var(--tx);
+      font-size: 0.9rem;
+      font-weight: 700;
+      margin-bottom: 0.3rem;
+    }
+
+    .contact-card p {
+      color: var(--tx3);
+      font-size: 0.72rem;
+    }
+
+    /* Modal */
+    #imageModal {
+      display: none;
+      position: fixed;
+      z-index: 9999;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: rgba(0, 0, 0, 0.92);
+      cursor: pointer;
+      backdrop-filter: blur(8px);
+    }
+
+    /* Scroll top */
+    .scroll-top {
+      position: fixed;
+      bottom: 2rem;
+      right: 2rem;
+      width: 46px;
+      height: 46px;
+      background: var(--a1);
+      border-radius: 14px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      cursor: pointer;
+      border: none;
+      box-shadow: 0 4px 20px rgba(27, 67, 198, 0.35);
+      transition: var(--transition);
+      z-index: 50;
+    }
+
+    .scroll-top:hover {
+      transform: translateY(-4px);
+      box-shadow: 0 8px 30px rgba(27, 67, 198, 0.5);
+    }
+
+    .scroll-top svg {
+      width: 20px;
+      height: 20px;
+      stroke: #fff;
+      fill: none;
+      stroke-width: 2.2;
+    }
+
+    footer {
+      background: var(--bg2);
+      border-top: 1px solid var(--br);
+      padding: 2rem;
+      text-align: center;
+      color: var(--tx3);
+      font-size: 0.8rem;
+    }
+
+    @media (max-width: 900px) {
+      .hero {
+        grid-template-columns: 1fr;
+        text-align: center;
+        gap: 2rem;
+      }
+      .hero p {
+        margin-left: auto;
+        margin-right: auto;
+      }
+      .grid {
+        grid-template-columns: 1fr;
+      }
+      .contact-grid {
+        grid-template-columns: 1fr 1fr;
+      }
+      nav {
+        padding: 0.7rem 1.5rem;
+      }
+      .nav-links {
+        gap: 1rem;
+      }
+    }
+
+    @media (max-width: 600px) {
+      .contact-grid {
+        grid-template-columns: 1fr;
+      }
+      .hero {
+        padding: 7rem 1.5rem 3rem;
+      }
+      .section-title {
+        font-size: 1.6rem;
+      }
+    }
+  </style>
+</head>
+<body>
+
+<nav>
+  <div class="logo">NW</div>
+  <ul class="nav-links">
+    <li><a href="#about">À propos</a></li>
+    <li><a href="#portfolio-videos">Vidéos</a></li>
+    <li><a href="#ui-mockups">Design</a></li>
+    <li><a href="#certificates">Certifications</a></li>
+    <li><a href="#experience">Expérience</a></li>
+    <li><a href="#skills">Compétences</a></li>
+    <li><a href="#contact">Contact</a></li>
+  </ul>
+</nav>
+
+<!-- HERO -->
+<div style="max-width:1120px;margin:0 auto">
+  <section class="hero">
+    <div>
+      <div class="hero-tag">✨ Disponible pour missions</div>
+      <h1><span>Nawres Wear</span><span class="grad-txt">Développeuse Full Stack</span></h1>
+      <p>Spécialisée dans les technologies web et mobile, avec une expertise en conception d'applications et en gestion d'équipe. Basée à Mahdia, Tunisie.</p>
+      <div class="btn-row">
+        <button class="btn-primary" onclick="document.getElementById('portfolio-videos').scrollIntoView({behavior:'smooth'})">Voir mes vidéos</button>
+        <button class="btn-outline" onclick="document.getElementById('contact').scrollIntoView({behavior:'smooth'})">Me contacter</button>
+      </div>
+    </div>
+    <div class="hero-visual">
+      <div class="avatar-ring">
+        <div class="avatar-inner">
+          <img src="nawres.png" alt="Nawres Wear">
+          <p class="avatar-name">Nawres Wear</p>
+          <p class="avatar-sub">Full Stack Dev</p>
+        </div>
+      </div>
+      <div class="float-badge fb1">Open to work</div>
+      <div class="float-badge fb2">📍 Mahdia, TN</div>
+    </div>
+  </section>
+
+  <!-- ABOUT -->
+  <section id="about" style="padding: 4rem 2rem;">
+    <span class="section-label">Profil</span>
+    <h2 class="section-title">À propos de moi</h2>
+    <div class="grid">
+      <div class="about-text">
+        <p>Développeuse web et mobile passionnée, spécialisée dans les technologies du web et du mobile, avec une expertise en conception d'applications et en gestion d'équipe.</p>
+        <p>Forte d'une expérience concrète acquise lors de projets académiques et professionnels, j'ai collaboré avec plusieurs entreprises dans le cadre de stages, faisant preuve de polyvalence, de rigueur et d'un esprit d'innovation.</p>
+        <p>N'hésitez pas à me contacter pour discuter d'opportunités ou de projets collaboratifs !</p>
+      </div>
+      <div>
+        <div class="info-card">
+          <h4>🎓 Formation</h4>
+          <ul>
+            <li><strong>Mastère Professionnel — Génie Logiciel</strong><span>ISET Sfax · 2025–2026</span></li>
+            <li><strong>Licence — Développement Systèmes Informatiques</strong><span>ISET Sfax · 2022–2024</span></li>
+          </ul>
+        </div>
+        <div class="info-card">
+          <h4>🗣 Langues</h4>
+          <ul>
+            <li style="display:flex;justify-content:space-between"><span>🇫🇷 Français</span><span style="color:var(--ag);font-size:.8rem;font-weight:600">Natif</span></li>
+            <li style="display:flex;justify-content:space-between"><span>🇬🇧 Anglais</span><span style="color:var(--ag);font-size:.8rem;font-weight:600">Courant</span></li>
+            <li style="display:flex;justify-content:space-between"><span>🇹🇳 Arabe</span><span style="color:var(--ag);font-size:.8rem;font-weight:600">Natif</span></li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </section>
+</div>
+
+<!-- VIDEO PORTFOLIO SECTION -->
+<div id="portfolio-videos" style="padding:5rem 0;background:#ECEFFE;width:100%">
+  <div style="max-width:1120px;margin:0 auto;padding:0 2rem">
+    <span class="section-label">Portfolio</span>
+    <h2 class="section-title">Mes vidéos de projets</h2>
+
+    <div class="tab-row">
+      <button class="tab-btn active" onclick="switchTab('all',this)">Tous</button>
+      <button class="tab-btn" onclick="switchTab('demo',this)">Démos</button>
+      <button class="tab-btn" onclick="switchTab('tutorial',this)">Présentations</button>
+    </div>
+
+    <div class="video-grid" id="video-grid">
+      <!-- Nouvelles vidéos avec liens Google Drive -->
+      <div class="video-card" data-type="demo">
+        <div class="video-thumb"><video src="https://drive.google.com/uc?export=download&id=1R6knOP6d2_k2Zu20YrQg-oOkxeck_1_C" controls></video></div>
+        <div class="video-info"><h4>Gestion Produits .NET</h4><p>Gestion des produits avec .NET Core et gestion d'erreurs personnalisée</p><span class="video-badge" style="background:rgba(27,67,198,.08);color:var(--a1)">Démo</span></div>
+      </div>
+      <div class="video-card" data-type="demo">
+        <div class="video-thumb"><video src="https://drive.google.com/uc?export=download&id=1y9ddcjfiizoEb1DQxcvu8r--qhnR3EqK" controls></video></div>
+        <div class="video-info"><h4>Gestion Produits .NET - Partie 2</h4><p>Continuation de la démo avec fonctionnalités avancées</p><span class="video-badge" style="background:rgba(27,67,198,.08);color:var(--a1)">Démo</span></div>
+      </div>
+      <div class="video-card" data-type="demo">
+        <div class="video-thumb"><video src="https://drive.google.com/uc?export=download&id=1b8cGntRrNIiB0VfpFbYCa7dT8ZiUjhR-" controls></video></div>
+        <div class="video-info"><h4>Gestion Produits .NET - Partie 3</h4><p>Démonstration complète de la plateforme de gestion</p><span class="video-badge" style="background:rgba(27,67,198,.08);color:var(--a1)">Démo</span></div>
+      </div>
+      <div class="video-card" data-type="demo">
+        <div class="video-thumb"><video src="https://drive.google.com/uc?export=download&id=10PWqKNQdCuIpqy1Ivjba-6lBb91rQJof" controls></video></div>
+        <div class="video-info"><h4>App Mobile Quiz</h4><p>Application mobile de quiz avec interface moderne</p><span class="video-badge" style="background:rgba(27,67,198,.08);color:var(--a1)">Démo</span></div>
+      </div>
+      <div class="video-card" data-type="tutorial">
+        <div class="video-thumb"><video src="https://drive.google.com/uc?export=download&id=1ZX9_G4AmAGCDOgUiyiN2GuJ3csuMQf8q" controls></video></div>
+        <div class="video-info"><h4>Chatbot ISET Sfax</h4><p>Démonstration du chatbot avec API météo et recherche floue</p><span class="video-badge" style="background:rgba(13,155,136,.08);color:var(--ag)">Présentation</span></div>
+      </div>
+      <div class="video-card" data-type="demo">
+        <div class="video-thumb"><video src="https://drive.google.com/uc?export=download&id=1-OtE_hMZsxU9EA4yqyRD5oJzy_k5sOn5" controls></video></div>
+        <div class="video-info"><h4>Plateforme SFS Service</h4><p>Démonstration de la plateforme de services SFS</p><span class="video-badge" style="background:rgba(27,67,198,.08);color:var(--a1)">Démo</span></div>
+      </div>
+      <div class="video-card" data-type="demo">
+        <div class="video-thumb"><video src="https://drive.google.com/uc?export=download&id=1qs8whmXMldwICxIbUieULobriZUAPrtU" controls></video></div>
+        <div class="video-info"><h4>Import/Export Utilisateurs</h4><p>Système d'import/export pour la gestion des utilisateurs</p><span class="video-badge" style="background:rgba(27,67,198,.08);color:var(--a1)">Démo</span></div>
+      </div>
+      <div class="video-card" data-type="tutorial">
+        <div class="video-thumb"><video src="https://drive.google.com/uc?export=download&id=1kJJ1iUlNHK0LJCPPCJTnwBZSvhrIz58J" controls></video></div>
+        <div class="video-info"><h4>Template SAV Angular</h4><p>Template SAV développé avec Angular</p><span class="video-badge" style="background:rgba(13,155,136,.08);color:var(--ag)">Présentation</span></div>
+      </div>
+      <div class="video-card" data-type="tutorial">
+        <div class="video-thumb"><video src="https://drive.google.com/uc?export=download&id=1-X1HN2BD22aVSwdlvwbArnPJYXKKzfPS" controls></video></div>
+        <div class="video-info"><h4>JWT .NET Application</h4><p>Test avec Swagger du JWT d'application .NET</p><span class="video-badge" style="background:rgba(13,155,136,.08);color:var(--ag)">Présentation</span></div>
+      </div>
+      <div class="video-card" data-type="demo">
+        <div class="video-thumb"><video src="https://drive.google.com/uc?export=download&id=15ZXudWBmmojE1mW2vV_PlbeyIh1mhabD" controls></video></div>
+        <div class="video-info"><h4>Liste Employés .NET</h4><p>Gestion de la liste des employés avec .NET Core</p><span class="video-badge" style="background:rgba(27,67,198,.08);color:var(--a1)">Démo</span></div>
+      </div>
+      <div class="video-card" data-type="tutorial">
+        <div class="video-thumb"><video src="https://drive.google.com/uc?export=download&id=18JduyAaTWMhknAOJOb4f-9LnuLBqKR3W" controls></video></div>
+        <div class="video-info"><h4>Déploiement Jenkins</h4><p>Démonstration du déploiement du projet avec Jenkins</p><span class="video-badge" style="background:rgba(13,155,136,.08);color:var(--ag)">Déploiement</span></div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- UI/UX MOCKUPS SECTION -->
+<div id="ui-mockups" style="padding:5rem 0;background:var(--bg2);width:100%">
+  <div style="max-width:1120px;margin:0 auto;padding:0 2rem">
+    <span class="section-label">Design</span>
+    <h2 class="section-title">Maquettes IHM</h2>
+    <div class="proj-grid" style="margin-top:2rem">
+      <!-- Toutes vos maquettes originales avec leurs noms exacts -->
+      <div class="proj-card"><div class="proj-thumb"><img src="maquette1.png" alt="Maquette 1"></div><div class="proj-body"><h4>Interface Administrateur My Comptable</h4><p>Espace administrateur pour la gestion complète du système comptable.</p><div class="tags"><span class="tag">Admin Panel</span><span class="tag">My Comptable</span></div><button class="btn-primary" style="padding:.5rem 1rem;font-size:.8rem" onclick="openModal('maquette1.png')">Voir</button></div></div>
+      <div class="proj-card"><div class="proj-thumb"><img src="maquette2.png" alt="Maquette 2"></div><div class="proj-body"><h4>Interface Inscription Client</h4><p>Page d'inscription pour les nouveaux clients du système My Comptable.</p><div class="tags"><span class="tag">Registration</span><span class="tag">Client Onboarding</span></div><button class="btn-primary" style="padding:.5rem 1rem;font-size:.8rem" onclick="openModal('maquette2.png')">Voir</button></div></div>
+      <div class="proj-card"><div class="proj-thumb"><img src="maquette3.png" alt="Maquette 3"></div><div class="proj-body"><h4>Interface Connexion Client</h4><p>Page de connexion sécurisée pour les clients du système My Comptable.</p><div class="tags"><span class="tag">Login</span><span class="tag">Client Access</span></div><button class="btn-primary" style="padding:.5rem 1rem;font-size:.8rem" onclick="openModal('maquette3.png')">Voir</button></div></div>
+      <div class="proj-card"><div class="proj-thumb"><img src="maquette4.png" alt="Maquette 4"></div><div class="proj-body"><h4>Dashboard Administrateur My Comptable</h4><p>Tableau de bord administrateur avec statistiques et gestion du système.</p><div class="tags"><span class="tag">Dashboard</span><span class="tag">Admin View</span></div><button class="btn-primary" style="padding:.5rem 1rem;font-size:.8rem" onclick="openModal('maquette4.png')">Voir</button></div></div>
+      <div class="proj-card"><div class="proj-thumb"><img src="maquette5.png" alt="Maquette 5"></div><div class="proj-body"><h4>Nouvelle Demande Client</h4><p>Interface pour soumettre de nouvelles demandes dans le dashboard My Comptable.</p><div class="tags"><span class="tag">Request Form</span><span class="tag">Client Portal</span></div><button class="btn-primary" style="padding:.5rem 1rem;font-size:.8rem" onclick="openModal('maquette5.png')">Voir</button></div></div>
+      <div class="proj-card"><div class="proj-thumb"><img src="maquette6.png" alt="Maquette 6"></div><div class="proj-body"><h4>Mes Dossiers Comptables</h4><p>Interface de gestion des dossiers comptables du client.</p><div class="tags"><span class="tag">File Management</span><span class="tag">Client Documents</span></div><button class="btn-primary" style="padding:.5rem 1rem;font-size:.8rem" onclick="openModal('maquette6.png')">Voir</button></div></div>
+      <div class="proj-card"><div class="proj-thumb"><img src="maquette7.png" alt="Maquette 7"></div><div class="proj-body"><h4>Interface Réclamation Client</h4><p>Système de gestion des réclamations et support client.</p><div class="tags"><span class="tag">Support</span><span class="tag">Complaints</span></div><button class="btn-primary" style="padding:.5rem 1rem;font-size:.8rem" onclick="openModal('maquette7.png')">Voir</button></div></div>
+      <div class="proj-card"><div class="proj-thumb"><img src="maquette8.png" alt="Maquette 8"></div><div class="proj-body"><h4>Convertisseur PDF vers Excel</h4><p>Outil de conversion de documents PDF en fichiers Excel pour le traitement comptable.</p><div class="tags"><span class="tag">PDF Converter</span><span class="tag">Excel Export</span></div><button class="btn-primary" style="padding:.5rem 1rem;font-size:.8rem" onclick="openModal('maquette8.png')">Voir</button></div></div>
+      <div class="proj-card"><div class="proj-thumb"><img src="submit document.png" alt="Submit Document"></div><div class="proj-body"><h4>Soumission Document</h4><p>Interface pour soumettre des documents dans le système d'import/export.</p><div class="tags"><span class="tag">Document Upload</span><span class="tag">Submission</span></div><button class="btn-primary" style="padding:.5rem 1rem;font-size:.8rem" onclick="openModal('submit%20document.png')">Voir</button></div></div>
+      <div class="proj-card"><div class="proj-thumb"><img src="document_management_dashboard 1.png" alt="Document Management Dashboard"></div><div class="proj-body"><h4>Dashboard Gestion Documents</h4><p>Tableau de bord pour la gestion et le suivi des documents.</p><div class="tags"><span class="tag">Dashboard</span><span class="tag">Document Management</span></div><button class="btn-primary" style="padding:.5rem 1rem;font-size:.8rem" onclick="openModal('document_management_dashboard%201.png')">Voir</button></div></div>
+      <div class="proj-card"><div class="proj-thumb"><img src="dashboard adminimport export.png" alt="Dashboard Admin Import Export"></div><div class="proj-body"><h4>Dashboard Admin Import/Export</h4><p>Panneau d'administration pour la gestion des opérations d'import/export.</p><div class="tags"><span class="tag">Admin Dashboard</span><span class="tag">Import/Export</span></div><button class="btn-primary" style="padding:.5rem 1rem;font-size:.8rem" onclick="openModal('dashboard%20adminimport%20export.png')">Voir</button></div></div>
+      <div class="proj-card"><div class="proj-thumb"><img src="chatbotexperted'importexport.png" alt="Chatbot Expert Import Export"></div><div class="proj-body"><h4>Chatbot Expert Import/Export</h4><p>Interface chatbot pour assistance experte en import/export.</p><div class="tags"><span class="tag">Chatbot</span><span class="tag">AI Assistant</span></div><button class="btn-primary" style="padding:.5rem 1rem;font-size:.8rem" onclick="openModal('chatbotexperted&apos;importexport.png')">Voir</button></div></div>
+      <div class="proj-card"><div class="proj-thumb"><img src="choisiermodeupload.png" alt="Choisir Mode Upload"></div><div class="proj-body"><h4>Sélection Mode Upload</h4><p>Interface pour choisir le mode d'upload des documents.</p><div class="tags"><span class="tag">Upload Options</span><span class="tag">File Selection</span></div><button class="btn-primary" style="padding:.5rem 1rem;font-size:.8rem" onclick="openModal('choisiermodeupload.png')">Voir</button></div></div>
+      <div class="proj-card"><div class="proj-thumb"><img src="interface du system GED.png" alt="Interface Système GED"></div><div class="proj-body"><h4>Interface Système GED</h4><p>Interface du système de gestion électronique de documents.</p><div class="tags"><span class="tag">GED System</span><span class="tag">Document Management</span></div><button class="btn-primary" style="padding:.5rem 1rem;font-size:.8rem" onclick="openModal('interface%20du%20system%20GED.png')">Voir</button></div></div>
+      <div class="proj-card"><div class="proj-thumb"><img src="maquette mes document.png" alt="Maquette Mes Documents"></div><div class="proj-body"><h4>Mes Documents</h4><p>Interface de gestion personnelle des documents utilisateur.</p><div class="tags"><span class="tag">Personal Documents</span><span class="tag">File Management</span></div><button class="btn-primary" style="padding:.5rem 1rem;font-size:.8rem" onclick="openModal('maquette%20mes%20document.png')">Voir</button></div></div>
+      <div class="proj-card"><div class="proj-thumb"><img src="submitdocument2.png" alt="Submit Document 2"></div><div class="proj-body"><h4>Soumission Document V2</h4><p>Interface améliorée pour la soumission de documents.</p><div class="tags"><span class="tag">Document Upload</span><span class="tag">Enhanced UI</span></div><button class="btn-primary" style="padding:.5rem 1rem;font-size:.8rem" onclick="window.open('submitdocument2.png', '_blank')">Voir</button></div></div>
+      <div class="proj-card"><div class="proj-thumb" style="background:linear-gradient(135deg,#f8f9fa,#e9ecef);display:flex;align-items:center;justify-content:center;height:180px"><svg width="80" height="80" viewBox="0 0 24 24" fill="none" stroke="#1B43C6" stroke-width="1.5"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><path d="M14 2v6h6"/><path d="M16 13H8"/><path d="M16 17H8"/><path d="M10 9H8"/></svg></div><div class="proj-body"><h4>Maquette Complète</h4><p>PDF contenant l'ensemble des maquettes et interfaces des projets.</p><div class="tags"><span class="tag">PDF</span><span class="tag">Maquettes</span><span class="tag">Design</span></div><a href="https://drive.google.com/file/d/1VFyhIXZUmfJzpbWNcAEPwDiWlc-qf9LW/view?usp=drive_link" target="_blank" class="btn-primary" style="padding:.5rem 1rem;font-size:.8rem;display:inline-block;text-decoration:none">Voir le PDF</a></div></div>
+    </div>
+  </div>
+</div>
+
+<!-- CERTIFICATES SECTION (conservé avec tous les liens) -->
+<div id="certificates" style="padding:5rem 0;background:#ECEFFE;width:100%">
+  <div style="max-width:1120px;margin:0 auto;padding:0 2rem">
+    <span class="section-label">Certifications</span>
+    <h2 class="section-title">Mes Certificats</h2>
+    <div class="proj-grid">
+      <div class="proj-card"><div class="proj-thumb"><img src="certficatccna.png" alt="CCNA"></div><div class="proj-body"><h4>CCNA: Enterprise Networking</h4><p>Certification Cisco décernée par ISET Sfax.</p><div class="tags"><span class="tag">CCNA</span><span class="tag">Networking</span></div><a href="_certificate_nawreselou2382-gmail-com_90b0d725-ec6b-432f-92a9-ecbf0b33ae01.pdf" target="_blank" class="btn-primary" style="padding:.5rem 1rem;font-size:.8rem;display:inline-block">Voir le certificat</a></div></div>
+      <div class="proj-card"><div class="proj-thumb"><img src="certificatspringboot&angular.png" alt="Spring Boot Angular"></div><div class="proj-body"><h4>Spring Boot & Angular</h4><p>Certification de développement full stack.</p><div class="tags"><span class="tag">Spring Boot</span><span class="tag">Angular</span></div></div></div>
+      <div class="proj-card"><div class="proj-thumb"><img src="certifacte of compoletionpringboot.png" alt="Spring Boot Completion"></div><div class="proj-body"><h4>Spring Boot Completion</h4><p>Certificat de completion Spring Boot avancée.</p><div class="tags"><span class="tag">Spring Boot</span><span class="tag">Java</span></div></div></div>
+    </div>
+  </div>
+</div>
+
+<div style="max-width:1120px;margin:0 auto">
+  <!-- EXPERIENCE -->
+  <section id="experience" style="padding:4rem 2rem">
+    <span class="section-label">Parcours</span>
+    <h2 class="section-title">Expérience</h2>
+    <div class="exp-item"><div class="exp-dot"></div><div class="exp-content"><h4>Full Stack Développeuse</h4><div class="exp-meta">Protech · Gabès · Fév 2024 – Mai 2024</div><p class="exp-desc">Développement d'une plateforme d'enchères en ligne, conception et réalisation de solutions full stack complètes.</p><div class="tags"><span class="tag">Spring Boot</span><span class="tag">Angular 17</span><span class="tag">MySQL</span></div></div></div>
+    <div class="exp-item"><div class="exp-dot"></div><div class="exp-content"><h4>Chef de Projet IT</h4><div class="exp-meta">SwiftCode · Sfax · Juil 2023 – Oct 2023</div><p class="exp-desc">Gestion d'un projet ecommerce, encadrement d'une équipe de stagiaires.</p><div class="tags"><span class="tag">Spring Boot</span><span class="tag">Angular</span><span class="tag">MongoDB</span><span class="tag">Docker</span></div></div></div>
+    <div class="exp-item"><div class="exp-dot"></div><div class="exp-content"><h4>Full Stack Développeuse</h4><div class="exp-meta">ISET Sfax · Juin 2023</div><p class="exp-desc">Analyse des données Mexico Toy Sales, création d'un tableau de bord Power BI.</p><div class="tags"><span class="tag">Power BI</span><span class="tag">ETL</span></div></div></div>
+  </section>
+
+  <!-- SKILLS -->
+  <div id="skills" style="background:var(--bg);padding:4rem 2rem;width:100%;border-radius:32px">
+    <span class="section-label">Expertise</span>
+    <h2 class="section-title">Compétences</h2>
+    <div class="sgrid">
+      <div class="scard"><div class="scat">Frontend</div><div class="schips"><span class="schip">React</span><span class="schip">Next.js 13</span><span class="schip">Angular</span><span class="schip">TypeScript</span><span class="schip">Flutter</span></div></div>
+      <div class="scard"><div class="scat">Backend</div><div class="schips"><span class="schip">Spring Boot</span><span class="schip">Node.js</span><span class="schip">Express.js</span><span class="schip">Django</span><span class="schip">.NET Core</span></div></div>
+      <div class="scard"><div class="scat">Bases de données</div><div class="schips"><span class="schip">MySQL</span><span class="schip">MongoDB</span><span class="schip">Firebase</span><span class="schip">Oracle 11g</span></div></div>
+      <div class="scard"><div class="scat">DevOps & Outils</div><div class="schips"><span class="schip">Docker</span><span class="schip">Jenkins</span><span class="schip">Git</span><span class="schip">CI/CD</span></div></div>
+    </div>
+  </div>
+
+  <!-- PROJECTS -->
+<section id="projects" style="padding:4rem 2rem">
+  <span class="section-label">Réalisations</span>
+  <h2 class="section-title">Projets</h2>
+  <div class="proj-grid">
+    <div class="proj-card">
+      <div class="proj-thumb" style="height:200px;overflow:hidden;position:relative">
+        <div style="display:grid;grid-template-columns:1fr 1fr;grid-template-rows:1fr 1fr;gap:4px;height:100%">
+          <img src="ajoute commentiare enchere.png" alt="Commentaire Enchere" style="width:100%;height:100%;object-fit:cover;grid-column:1;grid-row:1">
+          <img src="liste commentaire dans site enchere.png" alt="Liste Commentaire Enchere" style="width:100%;height:100%;object-fit:cover;grid-column:2;grid-row:1">
+          <img src="ajoute un signal site d'enchere.png" alt="Signal Site Enchere" style="width:100%;height:100%;object-fit:cover;grid-column:1;grid-row:2">
+          <img src="base de donner temps relle fairebase.png" alt="Base Firebase" style="width:100%;height:100%;object-fit:cover;grid-column:2;grid-row:2">
+        </div>
+      </div>
+      <div class="proj-body">
+        <h4>Plateforme d'enchères en ligne</h4>
+        <p>Enchères complètes avec Spring Boot et Angular 17, expérience utilisateur fluide et temps réel via Firebase.</p>
+        <div class="tags">
+          <span class="tag">Spring Boot</span>
+          <span class="tag">Angular 17</span>
+          <span class="tag">Firebase</span>
+          <span class="tag">MySQL</span>
+        </div>
+        <div style="margin-top:1rem;display:flex;gap:.75rem;flex-wrap:wrap">
+          <button class="btn-primary" style="padding:.5rem 1rem;font-size:.8rem" onclick="openModal('ajoute commentiare enchere.png')">Commentaires</button>
+          <button class="btn-primary" style="padding:.5rem 1rem;font-size:.8rem" onclick="openModal('ajoute un signal site d\'enchere.png')">Signaux</button>
+          <button class="btn-primary" style="padding:.5rem 1rem;font-size:.8rem" onclick="openModal('base de donner temps relle fairebase.png')">Base Firebase</button>
+          <button class="btn-primary" style="padding:.5rem 1rem;font-size:.8rem" onclick="openModal('categorie existe site d\'encheres.png')">Catégories</button>
+          <button class="btn-primary" style="padding:.5rem 1rem;font-size:.8rem" onclick="openModal('consulter enchers.png')">Consulter</button>
+          <button class="btn-primary" style="padding:.5rem 1rem;font-size:.8rem" onclick="openModal('les encheres .png')">Enchères</button>
+          <button class="btn-primary" style="padding:.5rem 1rem;font-size:.8rem" onclick="openModal('liste commentaire dans site enchere.png')">Liste Commentaires</button>
+          <button class="btn-primary" style="padding:.5rem 1rem;font-size:.8rem" onclick="openModal('liste d\'article pour un vendeur.png')">Articles Vendeur</button>
+          <button class="btn-primary" style="padding:.5rem 1rem;font-size:.8rem" onclick="openModal('page home d\'enchere.png')">Home</button>
+        </div>
+      </div>
+    </div>
+    <div class="proj-card">
+      <div class="proj-thumb">
+        <img src="interface de site import export .jpeg" alt="Import Export" onerror="this.style.display='none';this.parentNode.innerHTML='&#x1f4e6;'">
+      </div>
+      <div class="proj-body">
+        <h4>Plateforme Import/Export</h4>
+        <p>Interface web complète pour la gestion des opérations d'importation et exportation avec chatbot AI.</p>
+        <div class="tags">
+          <span class="tag">Web Interface</span>
+          <span class="tag">Chatbot AI</span>
+          <span class="tag">GED</span>
+        </div>
+        <div style="margin-top:1rem;display:flex;gap:.75rem">
+          <button class="btn-primary" style="padding:.5rem 1rem;font-size:.8rem" onclick="openModal('interface de site import export .jpeg')">Interface</button>
+          <button class="btn-primary" style="padding:.5rem 1rem;font-size:.8rem" onclick="openModal('page profile dans site import export.png')">Profil</button>
+        </div>
+      </div>
+    </div>
+    <div class="proj-card">
+      <div class="proj-thumb" style="height:140px;overflow:hidden">
+        <img src="page profile dans site import export.png" alt="Page Profile Import Export" style="width:100%;height:100%;object-fit:cover">
+      </div>
+      <div class="proj-body">
+        <h4>Page Profil Utilisateur</h4>
+        <p>Interface de profil utilisateur pour la gestion des informations personnelles dans le système import/export.</p>
+        <div class="tags">
+          <span class="tag">User Profile</span>
+          <span class="tag">Personal Data</span>
+          <span class="tag">Import/Export</span>
+        </div>
+        <div style="margin-top:1rem">
+          <button class="btn-primary" style="padding:.5rem 1rem;font-size:.8rem" onclick="openModal('page profile dans site import export.png')">Voir</button>
+        </div>
+      </div>
+    </div>
+    <div class="proj-card">
+      <div class="proj-thumb" style="height:140px;overflow:hidden">
+        <img src="page conexion import export.png" alt="Page Connexion Import Export" style="width:100%;height:100%;object-fit:cover">
+      </div>
+      <div class="proj-body">
+        <h4>Page de Connexion</h4>
+        <p>Interface d'authentification sécurisée pour l'accès à la plateforme import/export.</p>
+        <div class="tags">
+          <span class="tag">Authentication</span>
+          <span class="tag">Security</span>
+          <span class="tag">Login</span>
+        </div>
+        <div style="margin-top:1rem">
+          <button class="btn-primary" style="padding:.5rem 1rem;font-size:.8rem" onclick="openModal('page conexion import export.png')">Voir</button>
+        </div>
+      </div>
+    </div>
+    <div class="proj-card">
+      <div class="proj-thumb" style="height:140px;overflow:hidden">
+        <img src="Gestion utilisateur dans site import export.png" alt="Gestion Utilisateur Import Export" style="width:100%;height:100%;object-fit:cover">
+      </div>
+      <div class="proj-body">
+        <h4>Gestion des Utilisateurs</h4>
+        <p>Panneau d'administration pour la gestion des comptes utilisateurs et permissions.</p>
+        <div class="tags">
+          <span class="tag">User Management</span>
+          <span class="tag">Admin Panel</span>
+          <span class="tag">Permissions</span>
+        </div>
+        <div style="margin-top:1rem">
+          <button class="btn-primary" style="padding:.5rem 1rem;font-size:.8rem" onclick="openModal('Gestion utilisateur dans site import export.png')">Voir</button>
+        </div>
+      </div>
+    </div>
+    <div class="proj-card">
+      <div class="proj-thumb" style="height:140px;overflow:hidden">
+        <img src="pageinscription import export.png" alt="Page Inscription Import Export" style="width:100%;height:100%;object-fit:cover">
+      </div>
+      <div class="proj-body">
+        <h4>Page d'Inscription</h4>
+        <p>Interface d'inscription pour les nouveaux utilisateurs de la plateforme import/export.</p>
+        <div class="tags">
+          <span class="tag">Registration</span>
+          <span class="tag">User Onboarding</span>
+          <span class="tag">Import/Export</span>
+        </div>
+        <div style="margin-top:1rem">
+          <button class="btn-primary" style="padding:.5rem 1rem;font-size:.8rem" onclick="openModal('pageinscription import export.png')">Voir</button>
+        </div>
+      </div>
+    </div>
+    <div class="proj-card">
+      <div class="proj-thumb" style="height:140px;overflow:hidden">
+        <img src="liste des document en attend.png" alt="Liste Documents En Attente" style="width:100%;height:100%;object-fit:cover">
+      </div>
+      <div class="proj-body">
+        <h4>Liste Documents en Attente</h4>
+        <p>Interface affichant la liste des documents en attente de traitement dans le système import/export.</p>
+        <div class="tags">
+          <span class="tag">Document Queue</span>
+          <span class="tag">Pending Items</span>
+          <span class="tag">Import/Export</span>
+        </div>
+        <div style="margin-top:1rem">
+          <button class="btn-primary" style="padding:.5rem 1rem;font-size:.8rem" onclick="openModal('liste des document en attend.png')">Voir</button>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+  <!-- CONTACT -->
+  <section id="contact" style="padding:4rem 2rem">
+    <span class="section-label">Disponible</span>
+    <h2 class="section-title" style="margin-bottom:1rem">Me contacter</h2>
+    <p style="color:var(--tx2);margin-bottom:2.5rem">Je suis ouverte à toute opportunité ou collaboration !</p>
+    <div class="contact-grid">
+      <a href="mailto:nawreselou2382@gmail.com" class="contact-card"><div class="c-icon"><svg viewBox="0 0 24 24"><rect x="2" y="4" width="20" height="16" rx="2"/><path d="m22 7-8.97 5.7a1.94 1.94 0 01-2.06 0L2 7"/></svg></div><h4>Email</h4><p>nawreselou2382@gmail.com</p></a>
+      <a href="https://gitlab.com/nawreselou2382" target="_blank" class="contact-card"><div class="c-icon"><svg viewBox="0 0 24 24"><path d="M22.65 14.39L12 22.13 1.35 14.39a.84.84 0 01-.3-.94l1.22-3.78 2.44-7.51A.42.42 0 014.82 2a.43.43 0 01.58 0 .42.42 0 01.11.18l2.44 7.49h8.1l2.44-7.51A.42.42 0 0118.6 2a.43.43 0 01.58 0 .42.42 0 01.11.18l2.44 7.51L23 13.45a.84.84 0 01-.35.94z"/></svg></div><h4>GitLab</h4><p>gitlab.com/nawreselou2382</p></a>
+      <a href="https://github.com/nawreswear" target="_blank" class="contact-card"><div class="c-icon"><svg viewBox="0 0 24 24"><path d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 00-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0020 4.77 5.07 5.07 0 0019.91 1S18.73.65 16 2.48a13.38 13.38 0 00-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 005 4.77a5.44 5.44 0 00-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 009 18.13V22"/></svg></div><h4>GitHub</h4><p>github.com/nawreswear</p></a>
+      <a href="https://linkedin.com/in/nawres-wear" target="_blank" class="contact-card"><div class="c-icon"><svg viewBox="0 0 24 24"><path d="M16 8a6 6 0 016 6v7h-4v-7a2 2 0 00-2-2 2 2 0 00-2 2v7h-4v-7a6 6 0 016-6z"/><rect x="2" y="9" width="4" height="12"/><circle cx="4" cy="4" r="2"/></svg></div><h4>LinkedIn</h4><p>linkedin.com/in/nawres-wear</p></a>
+    </div>
+  </section>
+</div>
+
+<!-- Modal -->
+<div id="imageModal" onclick="closeModal()">
+  <div style="position:absolute;top:50%;left:50%;transform:translate(-50%,-50%);max-width:90%;max-height:90%">
+    <img id="modalImage" style="max-width:100%;max-height:90vh;border-radius:16px;box-shadow:0 20px 50px rgba(0,0,0,0.5)">
+    <button onclick="closeModal();event.stopPropagation()" style="position:absolute;top:-20px;right:-20px;background:var(--a1);color:white;border:none;border-radius:50%;width:40px;height:40px;font-size:1.5rem;cursor:pointer">×</button>
+  </div>
+</div>
+
+<footer>
+  <p>© 2025 Nawres Wear - Développeuse Full Stack · Mahdia, Tunisie</p>
+</footer>
+
+<button class="scroll-top" onclick="window.scrollTo({top:0,behavior:'smooth'})">
+  <svg viewBox="0 0 24 24"><polyline points="18 15 12 9 6 15"/></svg>
+</button>
+
+<script>
+  function openModal(src) {
+    const modal = document.getElementById('imageModal');
+    const img = document.getElementById('modalImage');
+    modal.style.display = 'block';
+    img.src = src;
+  }
+  function closeModal() {
+    document.getElementById('imageModal').style.display = 'none';
+  }
+  function switchTab(type, btn) {
+    document.querySelectorAll('.tab-btn').forEach(b => b.classList.remove('active'));
+    btn.classList.add('active');
+    document.querySelectorAll('.video-card').forEach(card => {
+      if (type === 'all' || card.getAttribute('data-type') === type) {
+        card.style.display = 'block';
+      } else {
+        card.style.display = 'none';
+      }
+    });
+  }
+  // Initialisation
+  document.querySelectorAll('.video-card').forEach(card => {
+    const badge = card.querySelector('.video-badge');
+    if (badge && badge.innerText.includes('Démo')) {
+      badge.style.background = 'rgba(27,67,198,.08)';
+      badge.style.color = '#1B43C6';
+    } else if (badge && badge.innerText.includes('Présentation')) {
+      badge.style.background = 'rgba(13,155,136,.08)';
+      badge.style.color = '#0D9B88';
+    }
+  });
+</script>
+</body>
+</html>
